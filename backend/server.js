@@ -3,7 +3,7 @@ var http = require("http");
 var fs = require("fs");
 var path = require("path");
 var app = express();
-var PORT = 7733;
+var PORT = process.env.PORT || 7733;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
