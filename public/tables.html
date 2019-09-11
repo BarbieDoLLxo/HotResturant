@@ -81,7 +81,7 @@
   </body>
   <script>
     function reservations() {
-      $.ajax({ url: "/api/tables", method: "GET" }).then(function(tableArray) {
+      $.ajax({ url: "/data", method: "GET" }).then(function(tableArray) {
         console.log(tableArray);
         console.log("------------");
 
@@ -103,9 +103,7 @@
     }
 
     function waitList() {
-      $.ajax({ url: "/api/waitlist", method: "GET" }).then(function(
-        waitingArray
-      ) {
+      $.ajax({ url: "/data", method: "GET" }).then(function(waitingArray) {
         console.log(waitingArray);
         console.log("------------");
 
@@ -127,7 +125,7 @@
     }
 
     function clearTables() {
-      $.ajax({ url: "/data/clear", method: "POST" }).then(function() {
+      $.ajax({ url: "/data", method: "POST" }).then(function() {
         $("#tableList").empty();
         $("#waitLists").empty();
       });
