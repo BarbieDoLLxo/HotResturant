@@ -81,12 +81,12 @@
   </body>
   <script>
     function reservations() {
-      $.ajax({ url: "/data/tables", method: "GET" }).then(function(tableArray) {
+      $.ajax({ url: "/api/tables", method: "GET" }).then(function(tableArray) {
         console.log(tableArray);
         console.log("------------");
 
         for (var i = 0; i < tableArray.length; i++) {
-          var tableList = $("#tableList");
+          var tableList = $("#tableSection");
 
           var listItem = $("<li>");
           listItem.append(
@@ -103,21 +103,23 @@
     }
 
     function waitList() {
-      $.ajax({ url: "/data/tables", method: "GET" }).then(function(waitArray) {
-        console.log(waitArray);
+      $.ajax({ url: "/api/waitlist", method: "GET" }).then(function(
+        waitingArray
+      ) {
+        console.log(waitingArray);
         console.log("------------");
 
-        for (var i = 0; i < waitArray.length; i++) {
-          var waitLists = $("#waitLists");
+        for (var i = 0; i < waitingArray.length; i++) {
+          var waitLists = $("#waitlistSection");
 
           var listItem = $("<li>");
           listItem.append(
             $("<h2>").text("Table #" + (i + 1)),
             $("<hr>"),
-            $("<h2>").text("ID: " + waitArray[i].customerID),
-            $("<h2>").text("Name: " + waitArray[i].customerName),
-            $("<h2>").text("Email: " + waitArray[i].customerEmail),
-            $("<h2>").text("Phone: " + waitArray[i].phoneNumber)
+            $("<h2>").text("ID: " + waitingArray[i].customerID),
+            $("<h2>").text("Name: " + waitingArray[i].customerName),
+            $("<h2>").text("Email: " + waitingArray[i].customerEmail),
+            $("<h2>").text("Phone: " + waitingArray[i].phoneNumber)
           );
           waitLists.append(listItem);
         }
